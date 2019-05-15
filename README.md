@@ -44,9 +44,9 @@ Players can do the following things in the game:
 
 <tr>
 
-<td style="width: 25.68%;">"go <DIRECTION>" or "<DIRECTION>"</td>
+<td style="width: 25.68%;">"go [DIRECTION]" or "[DIRECTION]"</td>
 
-<td style="width: 74.32%;">Attempt to move in the <DIRECTION> the player specified.</td>
+<td style="width: 74.32%;">Attempt to move in the [DIRECTION] the player specified.</td>
 
 </tr>
 
@@ -60,17 +60,17 @@ Players can do the following things in the game:
 
 <tr style="height: 24px;">
 
-<td style="width: 25.68%; height: 24px;">"take <ITEM>"</td>
+<td style="width: 25.68%; height: 24px;">"take [ITEM]"</td>
 
-<td style="width: 74.32%; height: 24px;">Take from the room the <ITEM> that the player specified. the <ITEM> will be placed in the player's inventory.</td>
+<td style="width: 74.32%; height: 24px;">Take from the room the [ITEM] that the player specified. the [ITEM] will be placed in the player's inventory.</td>
 
 </tr>
 
 <tr style="height: 24px;">
 
-<td style="width: 25.68%; height: 24px;">"use <ITEM>"</td>
+<td style="width: 25.68%; height: 24px;">"use [ITEM]"</td>
 
-<td style="width: 74.32%; height: 24px;">Use the <ITEM> that the player specified. The <ITEM> will only work if they are in the correct room to activate an EVENT.</td>
+<td style="width: 74.32%; height: 24px;">Use the [ITEM] that the player specified. The [ITEM] will only work if they are in the correct room to activate an EVENT.</td>
 
 </tr>
 
@@ -100,7 +100,7 @@ First, it is important to analyze what happens when each command is executed. 
 
 When this command is entered, the program executes the method **`help()`** in the UI class.  **NOTE:** If you add any additional commands to your game, you should also add the command to the help list so that players know they can use it.
 
-**go <DIRECTION> or <DIRECTION>**
+**go [DIRECTION] or [DIRECTION]**
 
 *   This command allows the player to _try to move_ in one of the cardinal directions (North, East, South, West).
 *   When either of these commands are recognized, the direction is passed into the `player.tryToMove(direction)` method.
@@ -116,11 +116,11 @@ When this command is entered, the program executes the method **`help()`** in th
     *   First, each time the player enters a room, `resetNearbyRoomsMap()` is called in the World class..
     *   Then, for each direction that the room allows the player to move, call the function `addNearbyRoom(direction)` in the World class to add that direction to the `nearbyRoomsMap` text.
 
-**take <span style="color: #ff0000;"><ITEM></span>**
+**take [ITEM]**
 
 *   Executes the `player.takeItem()` method detailed below:
-    *   Find out what <span style="color: #ff0000;"><ITEM></span> the player is trying to take by looking for the remaining words in the input.  
-        The following example shows that <span style="color: #ff0000;">RED KEY</span> ends up being the name of the <span style="color: #ff0000;"><ITEM></span> that the player attempts to take:
+    *   Find out what <span style="color: #ff0000;">[ITEM]</span> the player is trying to take by looking for the remaining words in the input.  
+        The following example shows that <span style="color: #ff0000;">RED KEY</span> ends up being the name of the <span style="color: #ff0000;">[ITEM]</span> that the player attempts to take:
 
 <pre style="padding-left: 80px;">This is where the Player starts! There is a RED KEY that has been meticulously carved to be shaped like an alligator.  
 You may go [South] [East].  
@@ -130,7 +130,7 @@ You may go [South] [East].
 *   *   Check if that item actually exists in the room (That way the player can't grab items that don't exist or are in other rooms). 
     *   Add it to the player's inventory, `player.addItemToInventory(item)` , and remove it from the room, `player.getCurrentRoom().removeItem(itemToRemove)`.
 
-**use <span style="color: #ff0000;"><ITEM></span>**
+**use <span style="color: #ff0000;">[ITEM]</span>**
 
 *   Executes the player.useItem() method detailed below:
 
