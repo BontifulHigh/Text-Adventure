@@ -80,7 +80,7 @@
         <entry file="file://$PROJECT_DIR$/_config.yml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="68">
-              <caret line="4" column="10" lean-forward="true" selection-start-line="4" selection-start-column="10" selection-end-line="4" selection-end-column="10" />
+              <caret line="4" column="7" selection-start-line="4" selection-end-line="4" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -88,8 +88,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/_layouts/default.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="233">
-              <caret line="20" column="7" lean-forward="true" selection-start-line="20" selection-start-column="7" selection-end-line="20" selection-end-column="7" />
+            <state relative-caret-position="413">
+              <caret line="31" column="49" selection-start-line="31" selection-start-column="49" selection-end-line="31" selection-end-column="49" />
             </state>
           </provider>
         </entry>
@@ -145,7 +145,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>player.getCurrentRoom().</find>
       <find>getRow()</find>
       <find>getColumn()</find>
       <find>getRoom</find>
@@ -175,6 +174,7 @@
       <find>Player player</find>
       <find>UI.player.</find>
       <find>header</find>
+      <find>base_url</find>
     </findStrings>
     <replaceStrings>
       <replace>currentRow</replace>
@@ -487,14 +487,14 @@
     <entry file="file://$PROJECT_DIR$/_config.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
-          <caret line="4" column="10" lean-forward="true" selection-start-line="4" selection-start-column="10" selection-end-line="4" selection-end-column="10" />
+          <caret line="4" column="7" selection-start-line="4" selection-end-line="4" selection-end-column="7" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/_layouts/default.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="233">
-          <caret line="20" column="7" lean-forward="true" selection-start-line="20" selection-start-column="7" selection-end-line="20" selection-end-column="7" />
+        <state relative-caret-position="413">
+          <caret line="31" column="49" selection-start-line="31" selection-start-column="49" selection-end-line="31" selection-end-column="49" />
         </state>
       </provider>
     </entry>
