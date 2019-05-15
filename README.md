@@ -1,1 +1,3 @@
-# Text-Adventure-BHS
+## Your Adventure Awaits...
+
+Welcome to the Text Adventure Final Project!
