@@ -120,6 +120,8 @@ You may go [South] [East].
 **use <span style="color: #ff0000;">[ITEM]</span>**
 
 *   Executes the player.useItem() method detailed below:
+*   *   Go through our list of events and see if one of the events' conditions are met.
+*   *   The conditions of an event include an item and a specific room.
 
 **inventory or i**
 
