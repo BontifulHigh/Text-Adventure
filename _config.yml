@@ -1,2 +1,5 @@
 theme: jekyll-theme-cayman
+title: Text Adventure Game
 show_downloads: true
+description: May 2019
+baseurl: /
