@@ -48,12 +48,12 @@ The example in the table above will look like this in the actual .csv file:
 
 `"RED KEY","There is a RED KEY that has been meticulously carved to be shaped like an alligator.","Main","Office","You opened the lock"`
 
-## `readRoomData()`
+## readRoomData()
 This method parses the *roomData.csv* file, generate rooms, and add them to the `rooms` variable. 
 
 *NOTE:* I wouldn't recommend making changes to this method unless you needed additional data to be pulled from the **roomData.csv** file.
 
-## `readItemData()`
+## readItemData()
 This method parses the *itemData.csv* file. It generates items and adds them to the `items` variable. It also generates events and adds them to the `events` variable.
 
 *NOTE:* I wouldn't recommend making changes to this method unless you needed additional data to be pulled from the **itemData.csv** file.

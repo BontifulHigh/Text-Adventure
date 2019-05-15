@@ -16,6 +16,6 @@ A room is a "location" in the world. Each room has a:
 The purpose of the Room class is to get and set each of these fields. 
 One additional method the room has is `getDescription()`
 
-## `getDescription()`
+## getDescription()
 The `getDescription()` method creates a description of the room that *includes* all of the items' descriptions. 
 It only describes items that are still in the room and can be *taken* by the player.
