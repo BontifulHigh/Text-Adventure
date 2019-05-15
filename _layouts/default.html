@@ -29,7 +29,10 @@
     <a href="{{ site.github.repository_url }}" class="btn">View Project on GitHub</a>
     {% endif %}
     {% if site.show_downloads %}
-        TESTING - {{ site.github.url.page.path }} - TESTING
+    <br>
+    site.github.url - {{ site.github.url }} <br>
+    site.github.page - {{ site.github.page }} <br>
+    site.github.page.path - {{ site.github.page.path }} <br>
         {% if site.github.url == "\" %}
         <a href="{{ site.github.zip_url }}" class="btn">Download .zip</a>
         <a href="{{ site.github.tar_url }}" class="btn">Download .tar.gz</a>
