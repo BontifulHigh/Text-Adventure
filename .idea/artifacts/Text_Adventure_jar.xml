@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Text Adventure:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Text_Adventure_jar</output-path>
+    <root id="archive" name="Text Adventure.jar">
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="module-output" name="Text Adventure" />
+    </root>
+  </artifact>
+</component>
