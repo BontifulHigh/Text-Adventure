@@ -2,11 +2,8 @@
 title: UI Class
 ---
 
-hello
+Interacting with the player
 ====
-
-
-#### **Taking a look at the User Interface:**
 
 The most important thing to do right now is to get familiar with how the User Interface operates. This means playing around with the program, navigating around the map, and testing out different commands. Your goal right now is to learn how the **`menu()`** method works in the UI class.
 
