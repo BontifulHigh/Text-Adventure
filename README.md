@@ -1,7 +1,5 @@
 ## Your Adventure Awaits... 
 
-* * *
-
 #### **Purpose of this assignment:**
 
 *   Learn how to read other software developers' code.

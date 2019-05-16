@@ -12,6 +12,9 @@ import java.util.StringTokenizer;
 public class UI {
     public static boolean done = false;
     public static Scanner scnr = new Scanner(System.in);
+    /**
+     *
+     */
     static World world;
     static Player player;
 
@@ -35,43 +38,24 @@ public class UI {
      */
     public void menu(){
         System.out.print(intro());
-        boolean isDescribingRoom = true; // determines whether or not we describe the room as the first action in the validChoice loop.
 
         while (!done){
-            String commandString = null;
-            String command = ""; // Command ends up being the first word they type.
-            String argument = null; // Argument is the second word, if it exists.
 
             // Describe the room to the player
-            if(isDescribingRoom) {
-                System.out.print(world.getRoomDetails(player.getCurrentRoom()));
-                isDescribingRoom = false; // Set this back to false - It may change later on after the player decides to move or otherwise describe the room.
-            }
+            System.out.print(world.getRoomDetails(player.getCurrentRoom()));
 
             System.out.print("\n>\t");
-            commandString = scnr.nextLine();
+            String commandString = scnr.nextLine();
             boolean validChoice = false; // TODO - We should replace this validChoice stuff with a validChoice function instead.
 
             while(!validChoice) {
 
-
                 // Get the command and [optional] argument as lowercase strings
                 StringTokenizer parser = new StringTokenizer(commandString, "\t,.;:?! ");
-                if(parser.hasMoreTokens()) {
-                    command = parser.nextToken().toLowerCase();
-                }
-                else {
-                    System.out.print("\nSorry I couldn't hear you.");
-                }
-                if(parser.hasMoreTokens()){
-                    argument = "";
-                }
-                while(parser.hasMoreTokens()){
-                    argument += parser.nextToken();
-                    if(parser.hasMoreTokens()){
-                        argument +=" ";
-                    }
-                }
+                String command = getCommand(parser);
+                String argument = getArgument(parser);
+
+                validChoice = true;
 
                 // Call the appropriate command of the Player. If you add new commands,
                 // add a test for the new command name here and make the appropriate
@@ -79,87 +63,65 @@ public class UI {
                 switch (command) {
                     case "help":
                         System.out.print(help());
-                        validChoice = true;
                         break;
                     case "take":
                         player.tryToTakeItem(argument);
-                        validChoice = true;
                         break;
                     case "use":
                         player.tryToUseItem(argument);
-                        validChoice = true;
                         break;
                     case "inventory":
                     case "i":
                         player.outputInventory();
-                        validChoice = true;
                         break;
                     case "go":
-                        if(player.tryToMove(argument.toLowerCase())) {
-                            isDescribingRoom = true;
-                        }
-                        else {
-                            System.out.print("\nUnable to move that direction.");
-                        }
-                        validChoice = true;
+                        player.tryToMove(argument.toLowerCase());
                         break;
                     case "n":
                     case "north":
-                        if(player.tryToMove("n")) {
-                            isDescribingRoom = true;
-                        }
-                        else {
-                            System.out.print("\nUnable to move that direction.");
-                        }
-                        validChoice = true;
-                        break;
                     case "e":
                     case "east":
-                        if(player.tryToMove("e")) {
-                            isDescribingRoom = true;
-                        }
-                        else {
-                            System.out.print("\nUnable to move that direction.");
-                        }
-                        validChoice = true;
-                        break;
                     case "s":
                     case "south":
-                        if(player.tryToMove("s")) {
-                            isDescribingRoom = true;
-                        }
-                        else {
-                            System.out.print("\nUnable to move that direction.");
-                        }
-                        validChoice = true;
-                        break;
                     case "w":
                     case "west":
-                        if(player.tryToMove("w")) {
-                            isDescribingRoom = true;
-                        }
-                        else {
-                            System.out.print("\nUnable to move that direction.");
-                        }
-                        validChoice = true;
+                        player.tryToMove(command);
                         break;
                     case "map":
                         world.printNearbyRoomsMap();
-                        validChoice = true;
                         break;
                     case "q":
                     case "quit":
                         done = true;
-                        validChoice = true;
                         break;
                     default:
                         System.out.print("Invalid option. Use help if you're not sure what you can do.");
                         System.out.print("\n>\t");
+                        validChoice = false;
                         commandString = scnr.nextLine().toLowerCase();
                         break;
                 }
             }
         }
+    }
+
+    private String getCommand(StringTokenizer parser) {
+        String command="";
+        if(parser.hasMoreTokens()) {
+            command = parser.nextToken().toLowerCase();
+        }
+        return command;
+    }
+
+    private String getArgument(StringTokenizer parser) {
+        String argument = "";
+        while(parser.hasMoreTokens()){
+            argument += parser.nextToken();
+            if(parser.hasMoreTokens()){
+                argument +=" ";
+            }
+        }
+        return argument;
     }
 
     /**

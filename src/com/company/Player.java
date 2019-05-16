@@ -160,35 +160,33 @@ public class Player {
      *
      * @return  true if the move was successful.
      */
-    public boolean tryToMove(String direction){
+    public void tryToMove(String direction){
         int currentRow = getCurrentRoom().getRow();
         int currentColumn = getCurrentRoom().getColumn();
-        boolean canMove = false;
 
-        if(direction.equals("n") || direction.equals("north")) {
-            if (World.roomExists(currentRow-1, currentColumn)) {
-                setCurrentRoom(World.getRoom(currentRow - 1, currentColumn));
-                canMove = true;
-            }
+        switch(direction){
+            case "n":
+            case "north":
+                if (World.roomExists(currentRow-1, currentColumn)) {
+                    setCurrentRoom(World.getRoom(currentRow - 1, currentColumn));
+                }
+            case "s":
+            case "south":
+                if (World.roomExists(currentRow + 1, currentColumn)) {
+                    setCurrentRoom(World.getRoom(currentRow + 1, currentColumn));
+                }
+            case "e":
+            case "east":
+                if (World.roomExists(currentRow, currentColumn + 1)) {
+                    setCurrentRoom(World.getRoom(currentRow, currentColumn + 1));
+                }
+            case "w":
+            case "west":
+                if (World.roomExists(currentRow, currentColumn-1)) {
+                    setCurrentRoom(World.getRoom(currentRow, currentColumn-1));
+                }
+            default:
+                System.out.print("\nUnable to move that direction.");
         }
-        if(direction.equals("s") || direction.equals("south")) {
-            if (World.roomExists(currentRow + 1, currentColumn)) {
-                setCurrentRoom(World.getRoom(currentRow + 1, currentColumn));
-                canMove = true;
-            }
-        }
-        if(direction.equals("w") || direction.equals("west")) {
-            if (World.roomExists(currentRow, currentColumn-1)) {
-                setCurrentRoom(World.getRoom(currentRow, currentColumn-1));
-                canMove = true;
-            }
-        }
-        if(direction.equals("e") || direction.equals("east")) {
-            if (World.roomExists(currentRow, currentColumn+1)) {
-                setCurrentRoom(World.getRoom(currentRow, currentColumn+1));
-                canMove = true;
-            }
-        }
-        return canMove;
     }
 }
