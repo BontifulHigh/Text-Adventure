@@ -12,14 +12,15 @@ public class Player {
 
     private String name="Player";
     private int hp = 100;
-    private Room currentRoom = World.startingRoom;
+    private Room currentRoom;
     private ArrayList<Item> inventory = new ArrayList<Item>();
 
     /**
      * Constructor for the (single) object of class player.
+     * @param startingRoom
      */
-    public Player(){
-
+    public Player(Room startingRoom){
+        setCurrentRoom(startingRoom);
     }
 
     /**
@@ -91,9 +92,12 @@ public class Player {
      * @param itemName item to find.
      * @return Item, if found. If not found, then null.
      */
-    public Item findItem(String itemName){
-        for(Item item : inventory){
-            if(item.getName().equals(itemName)){
+    public Item findItem(String itemName, ArrayList<Item> itemList){
+        itemName = itemName.toUpperCase();
+        String invItemName;
+        for(Item item : itemList){
+            invItemName = item.getName().toUpperCase();
+            if(itemName.equals(invItemName)){
                 return item;
             }
         }
@@ -108,20 +112,15 @@ public class Player {
      * @param itemName the name of the item the player is trying to take.
      */
     public void tryToTakeItem(String itemName) {
-        boolean foundItem = false;
+        itemName = itemName.toUpperCase();
         Item itemToRemove = null;
 
         // Loop through each item in the current room's item list to find the item specified.
-        for(Item item : getCurrentRoom().getItems()){
-            if(itemName.equals(item.getName()) && !foundItem){
-                addItemToInventory(item);
-                itemToRemove = item;
-                System.out.print("You grabbed the " + item.getName() + "\n");
-                foundItem = true;
-            }
-        }
-        if(foundItem) {
-            getCurrentRoom().removeItem(itemToRemove);
+        Item takenItem = findItem(itemName, getCurrentRoom().getItems());
+        if(takenItem != null) {
+            addItemToInventory(takenItem);
+            getCurrentRoom().removeItem(takenItem);
+            System.out.print("You grabbed the " + itemName + "\n");
         }
         else {
             System.out.print("The item " + itemName + " was not found.\n");
@@ -133,7 +132,7 @@ public class Player {
      * @param itemName The name of the item that the player tried to use.
      */
     public void tryToUseItem(String itemName) {
-        Item item = findItem(itemName);
+        Item item = findItem(itemName, getInventory());
         if(!(item == null)){
             item.useItem(getCurrentRoom());
         }
@@ -163,30 +162,13 @@ public class Player {
     public void tryToMove(String direction){
         int currentRow = getCurrentRoom().getRow();
         int currentColumn = getCurrentRoom().getColumn();
+        Room newRoom = getCurrentRoom().getConnectingRoom(direction);
 
-        switch(direction){
-            case "n":
-            case "north":
-                if (World.roomExists(currentRow-1, currentColumn)) {
-                    setCurrentRoom(World.getRoom(currentRow - 1, currentColumn));
-                }
-            case "s":
-            case "south":
-                if (World.roomExists(currentRow + 1, currentColumn)) {
-                    setCurrentRoom(World.getRoom(currentRow + 1, currentColumn));
-                }
-            case "e":
-            case "east":
-                if (World.roomExists(currentRow, currentColumn + 1)) {
-                    setCurrentRoom(World.getRoom(currentRow, currentColumn + 1));
-                }
-            case "w":
-            case "west":
-                if (World.roomExists(currentRow, currentColumn-1)) {
-                    setCurrentRoom(World.getRoom(currentRow, currentColumn-1));
-                }
-            default:
-                System.out.print("\nUnable to move that direction.");
+        if(newRoom != null){
+            setCurrentRoom(newRoom);
+        }
+        else {
+            System.out.print("\nUnable to move " + direction);
         }
     }
 }

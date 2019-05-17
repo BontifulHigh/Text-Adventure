@@ -36,7 +36,12 @@ public class ReadCSV {
 
                 // use comma as separator
                 String[] roomData = line.split(cvsSplitBy);
-                Room newRoom = new Room(Integer.parseInt(roomData[0]), Integer.parseInt(roomData[1]), roomData[2].replace("\"",""), roomData[3].replace("\"",""));
+                int roomRow = Integer.parseInt(roomData[0]);
+                int roomColumn = Integer.parseInt(roomData[1]);
+                String roomName = roomData[2].replace("\"","");
+                String roomDescription = roomData[3].replace("\"","");
+
+                Room newRoom = new Room(roomRow, roomColumn, roomName, roomDescription);
                 rooms.add(newRoom);
 
             }
@@ -70,13 +75,19 @@ public class ReadCSV {
 
                 // use comma as separator
                 String[] itemData = line.split(cvsSplitBy);
-                Room room = World.getRoom(itemData[2].replace("\"",""));
-                Room triggerRoom = World.getRoom(itemData[3].replace("\"",""));
+                String itemName = itemData[0].replace("\"","");
+                String itemDescription = itemData[1].replace("\"","");
+                String itemInitialLocation = itemData[2].replace("\"","");
+                String eventTriggerLocation = itemData[3].replace("\"","");
+                String eventTriggerDescription = itemData[4].replace("\"","");
 
-                Item newItem = new Item(itemData[0].replace("\"",""),itemData[1].replace("\"",""),room);
+                Room itemInitialRoom = World.getRoom(itemInitialLocation);
+                Room triggerRoom = World.getRoom(eventTriggerLocation);
+
+                Item newItem = new Item(itemName, itemDescription, itemInitialRoom);
                 items.add(newItem);
 
-                Event event = new Event(triggerRoom, newItem, itemData[4].replace("\"",""));
+                Event event = new Event(triggerRoom, newItem, eventTriggerDescription);
                 World.events.add(event);
             }
 

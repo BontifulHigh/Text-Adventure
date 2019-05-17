@@ -28,3 +28,13 @@ The initial program code that you are given has basic functionality. However, as
   - Are there any additional features you might want to implement?
 - Create your game map on paper first- what rooms will there be and how will they connect?
 - Make changes to the csv files so that the game has the rooms, items, and events that you came up with.
+
+**Part 2**
+- Identify a feature that you'd like to add to the game. Work on implementing your feature into the game by working with other classmates and Mr. Wolff. Don't hesitate to ask Mr. Wolff questions about what direction to go for the feature you choose to implement.
+- It may help to start with some ideas for features to work on:
+  - Adding a turn tracker. Maybe the game ends after some # of turns.
+  - Making paths only work if you have a specific item.
+  - Adding monsters that you can attack!
+  - Making the UI neater and more interesting for the player.
+- For this part, you will be evaluated on your effort, communication, and how well you challenge yourself during this project.
+- You WILL NOT be evaluated on whether or not the feature is successfully implemented. Some features will be more difficult than others, and that's great!

@@ -43,66 +43,69 @@ public class UI {
 
             // Describe the room to the player
             System.out.print(world.getRoomDetails(player.getCurrentRoom()));
+            world.updateNearbyRoomsMap(player.getCurrentRoom());
 
             System.out.print("\n>\t");
-            String commandString = scnr.nextLine();
-            boolean validChoice = false; // TODO - We should replace this validChoice stuff with a validChoice function instead.
+            String commandString;
+            boolean isParsingInput = true;
 
-            while(!validChoice) {
+            while(isParsingInput) {
 
+                commandString = scnr.nextLine().toLowerCase();
                 // Get the command and [optional] argument as lowercase strings
                 StringTokenizer parser = new StringTokenizer(commandString, "\t,.;:?! ");
                 String command = getCommand(parser);
                 String argument = getArgument(parser);
 
-                validChoice = true;
-
-                // Call the appropriate command of the Player. If you add new commands,
-                // add a test for the new command name here and make the appropriate
-                // call(s) to the Player.
-                switch (command) {
-                    case "help":
-                        System.out.print(help());
-                        break;
-                    case "take":
-                        player.tryToTakeItem(argument);
-                        break;
-                    case "use":
-                        player.tryToUseItem(argument);
-                        break;
-                    case "inventory":
-                    case "i":
-                        player.outputInventory();
-                        break;
-                    case "go":
-                        player.tryToMove(argument.toLowerCase());
-                        break;
-                    case "n":
-                    case "north":
-                    case "e":
-                    case "east":
-                    case "s":
-                    case "south":
-                    case "w":
-                    case "west":
-                        player.tryToMove(command);
-                        break;
-                    case "map":
-                        world.printNearbyRoomsMap();
-                        break;
-                    case "q":
-                    case "quit":
-                        done = true;
-                        break;
-                    default:
-                        System.out.print("Invalid option. Use help if you're not sure what you can do.");
-                        System.out.print("\n>\t");
-                        validChoice = false;
-                        commandString = scnr.nextLine().toLowerCase();
-                        break;
-                }
+                isParsingInput = parseInput(command, argument);
             }
         }
+    }
+
+    private boolean parseInput(String command, String argument) {
+        // Call the appropriate command of the Player. If you add new commands,
+        // add a test for the new command name here and make the appropriate
+        // call(s) to the Player.
+        switch (command) {
+            case "help":
+                help();
+                break;
+            case "take":
+                player.tryToTakeItem(argument);
+                break;
+            case "use":
+                player.tryToUseItem(argument);
+                break;
+            case "inventory":
+            case "i":
+                player.outputInventory();
+                break;
+            case "go":
+                player.tryToMove(argument.toLowerCase());
+                break;
+            case "n":
+            case "north":
+            case "e":
+            case "east":
+            case "s":
+            case "south":
+            case "w":
+            case "west":
+                player.tryToMove(command);
+                break;
+            case "map":
+                world.printNearbyRoomsMap();
+                break;
+            case "q":
+            case "quit":
+                done = true;
+                break;
+            default:
+                System.out.print("Invalid option. Use help if you're not sure what you can do.");
+                System.out.print("\n>\t");
+                return true;
+        }
+        return false;
     }
 
     private String getCommand(StringTokenizer parser) {
@@ -147,7 +150,7 @@ public class UI {
      * Returns a list of available commands.
      * @return The list of available commands.
      */
-    public static String help(){
+    public static void help(){
         String commands = "\nAVAILABLE COMMANDS: \n";
         commands += " - help\n";
         commands += " - go <DIRECTION>, n, s, e, w\n";
@@ -155,7 +158,8 @@ public class UI {
         commands += " - take <ITEM>\n";
         commands += " - use <ITEM>\n";
         commands += " - inventory or i\n";
-        commands += " - quit or q";
-        return commands;
+        commands += " - quit or q\n";
+        System.out.print(commands);
     }
+
 }

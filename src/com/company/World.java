@@ -1,6 +1,8 @@
 package com.company;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * This class represents the whole world. It constructs the rooms and gives us the ability
@@ -19,8 +21,7 @@ public class World {
     static List<Item> items = new ArrayList<Item>();
     static List<Event> events = new ArrayList<Event>();
     static String[] nearbyRoomsMap = new String[9];
-    Player player;
-    final static Room startingRoom = getRoom(0,0);
+    static Room startingRoom;
 
     /**
      * Constructor for objects of class World.
@@ -29,15 +30,32 @@ public class World {
      * <li>populate the map in the world</li>
      * <li>populate the items and place them into their appropriate rooms</li>
      * </ol>
-     * @param gamePlayer The player in the game.
      */
-    public World(Player gamePlayer){
+    public World(){
         //map = myMap();
         map = ReadCSV.readRoomData();
         items = ReadCSV.readItemData();
-        player = gamePlayer;
-        player.setCurrentRoom(getRoom(0,0));
         placeItemsInRooms();
+        generateConnectingRooms(map);
+        startingRoom = getRoom("Living Room");
+    }
+
+    public static void generateConnectingRooms(List<Room> rooms) {
+        for(Room room : rooms) {
+            room.addConnectingRoom("n", room.getRoomNorth(room.getRow(), room.getColumn()));
+            room.addConnectingRoom("e", room.getRoomEast(room.getRow(), room.getColumn()));
+            room.addConnectingRoom("s", room.getRoomSouth(room.getRow(), room.getColumn()));
+            room.addConnectingRoom("w", room.getRoomWest(room.getRow(), room.getColumn()));
+            room.addConnectingRoom("north", room.getRoomNorth(room.getRow(), room.getColumn()));
+            room.addConnectingRoom("east", room.getRoomEast(room.getRow(), room.getColumn()));
+            room.addConnectingRoom("south", room.getRoomSouth(room.getRow(), room.getColumn()));
+            room.addConnectingRoom("west", room.getRoomWest(room.getRow(), room.getColumn()));
+        }
+    }
+
+    public Room getStartingRoom(){
+        System.out.println(startingRoom);
+        return startingRoom;
     }
 
     /**
@@ -50,25 +68,15 @@ public class World {
 
     /**
      * Search through our map to find a specific room
-     * @param row row of the room that we're trying to find.
-     * @param column column of the room that we're trying to find.
+     * @param currentRow row of the room that we're trying to find.
+     * @param currentColumn column of the room that we're trying to find.
      * @return true if there is room at the indicated row and column.
      */
-    public static boolean roomExists(int row, int column){
-        return getRoom(row, column) != null;
-    }
 
-    /**
-     * Retrive a room in the map at a specified location
-     * @param row row of the room being queried
-     * @param column column of the room being queried
-     * @return the room that exists at this row and column.
-     * returns null if there's no room at this location.
-     */
-    public static Room getRoom(int row, int column){
-        for(int i=0; i < map.size(); i++){
-            if(map.get(i).getRow() == row && map.get(i).getColumn() == column){
-                return map.get(i);
+    public static Room getRoom(int currentRow, int currentColumn) {
+        for(Room room : map){
+            if (room.getRow() == currentRow && room.getColumn() == currentColumn) {
+                return room;
             }
         }
         return null;
@@ -99,29 +107,31 @@ public class World {
         details += room.getDescription();
         details += "\n";
         details += "You may go";
-        resetNearbyRoomsMap();
 
         // Check each direction and add that direction to details if there's a room there.
-        if (roomExists(room.getRow()-1, room.getColumn())) {
+        if (room.getConnectingRoom("n") != null) {
             details +=" [North]";
-            addNearbyRoom("North");
         }
-        if (roomExists(room.getRow()+1, room.getColumn())) {
+        if (room.getConnectingRoom("s") != null) {
             details +=" [South]";
-            addNearbyRoom("South");
         }
-        if (roomExists(room.getRow(), room.getColumn()+1)) {
+        if (room.getConnectingRoom("e") != null) {
             details+=" [East]";
-            addNearbyRoom("East");
         }
-        if (roomExists(room.getRow(), room.getColumn()-1)) {
+        if (room.getConnectingRoom("w") != null) {
             details+=" [West]";
-            addNearbyRoom("West");
         }
 
         details +=".";
 
         return details;
+    }
+
+    public void updateNearbyRoomsMap(Room room){
+        resetNearbyRoomsMap();
+        for(String direction : room.getConnectingDirections()){
+            addNearbyRoom(direction);
+        }
     }
 
     /**
@@ -172,26 +182,26 @@ public class World {
      * @param direction The direction that needs to be added to the map.
      */
     private void addNearbyRoom(String direction){
-        if(direction.equals("East")){
+        if(direction.equals("e")){
             nearbyRoomsMap[2] = nearbyRoomsMap[2].substring(0,8) + "****\n";
             nearbyRoomsMap[3] = nearbyRoomsMap[3].substring(0,8) + "    \n";
             nearbyRoomsMap[4] = nearbyRoomsMap[4].substring(0,8) + "    \n";
             nearbyRoomsMap[5] = nearbyRoomsMap[5].substring(0,8) + "    \n";
             nearbyRoomsMap[6] = nearbyRoomsMap[6].substring(0,8) + "****\n";
         }
-        if(direction.equals("West")){
+        if(direction.equals("w")){
             nearbyRoomsMap[2] = "****" + nearbyRoomsMap[2].substring(4);
             nearbyRoomsMap[3] = "    " + nearbyRoomsMap[3].substring(4);
             nearbyRoomsMap[4] = "    " + nearbyRoomsMap[4].substring(4);
             nearbyRoomsMap[5] = "    " + nearbyRoomsMap[5].substring(4);
             nearbyRoomsMap[6] = "****" + nearbyRoomsMap[6].substring(4);
         }
-        if(direction.equals("South")){
+        if(direction.equals("s")){
             nearbyRoomsMap[6] = nearbyRoomsMap[2].substring(0,3) + "*    *" + nearbyRoomsMap[2].substring(9);
             nearbyRoomsMap[7] = "****    ****\n";
             nearbyRoomsMap[8] = "****    ****\n";
         }
-        if(direction.equals("North")){
+        if(direction.equals("n")){
             nearbyRoomsMap[0] = "****    ****\n";
             nearbyRoomsMap[1] = "****    ****\n";
             nearbyRoomsMap[2] = nearbyRoomsMap[2].substring(0,3) + "*    *" + nearbyRoomsMap[2].substring(9);
