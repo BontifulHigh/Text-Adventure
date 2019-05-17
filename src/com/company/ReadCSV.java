@@ -39,7 +39,7 @@ public class ReadCSV {
                 int roomRow = Integer.parseInt(roomData[0]);
                 int roomColumn = Integer.parseInt(roomData[1]);
                 String roomName = roomData[2].replace("\"","");
-                String roomDescription = roomData[3].replace("\"","");
+                String roomDescription = roomData[3].replace("\"","").replace("\\n", "\n");
 
                 Room newRoom = new Room(roomRow, roomColumn, roomName, roomDescription);
                 rooms.add(newRoom);

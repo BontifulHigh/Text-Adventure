@@ -109,6 +109,12 @@ public class World {
         details += "You may go";
 
         // Check each direction and add that direction to details if there's a room there.
+        details = getDirectionDetails(room, details);
+
+        return details;
+    }
+
+    private String getDirectionDetails(Room room, String details) {
         if (room.getConnectingRoom("n") != null) {
             details +=" [North]";
         }
@@ -121,9 +127,6 @@ public class World {
         if (room.getConnectingRoom("w") != null) {
             details+=" [West]";
         }
-
-        details +=".";
-
         return details;
     }
 
