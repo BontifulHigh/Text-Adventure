@@ -1,4 +1,5 @@
 package com.company;
+import java.util.Arrays;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
@@ -17,6 +18,8 @@ public class UI {
      */
     static World world;
     static Player player;
+
+    static String[] commands = {"n", "north", "e", "east", "s", "south", "w", "west"};
 
     /**
      * Constructor for a UI object.
@@ -57,35 +60,21 @@ public class UI {
 
                 validChoice = true;
 
-                // Call the appropriate command of the Player. If you add new commands,
-                // add a test for the new command name here and make the appropriate
-                // call(s) to the Player.
+                if(command.equals("q") || command.equals("Quit"))
+
+                move(command);
+
+                if(!argument .equals("")){
+                    tryPlayerAction(argument);
+                }
+
                 switch (command) {
                     case "help":
-                        System.out.print(help());
-                        break;
-                    case "take":
-                        player.tryToTakeItem(argument);
-                        break;
-                    case "use":
-                        player.tryToUseItem(argument);
+                        help();
                         break;
                     case "inventory":
                     case "i":
                         player.outputInventory();
-                        break;
-                    case "go":
-                        player.tryToMove(argument.toLowerCase());
-                        break;
-                    case "n":
-                    case "north":
-                    case "e":
-                    case "east":
-                    case "s":
-                    case "south":
-                    case "w":
-                    case "west":
-                        player.tryToMove(command);
                         break;
                     case "map":
                         world.printNearbyRoomsMap();
@@ -102,6 +91,23 @@ public class UI {
                         break;
                 }
             }
+        }
+    }
+
+    private void tryPlayerAction(String argument) {
+        switch(argument){
+            case "take":
+                player.tryToTakeItem(argument);
+            case "use":
+                player.tryToUseItem(argument);
+            case "go":
+                player.tryToMove(argument);
+        }
+    }
+
+    private void move(String command) {
+        if(Arrays.asList(commands).contains(command)){
+            player.tryToMove(command);
         }
     }
 
@@ -147,7 +153,7 @@ public class UI {
      * Returns a list of available commands.
      * @return The list of available commands.
      */
-    public static String help(){
+    public static void help(){
         String commands = "\nAVAILABLE COMMANDS: \n";
         commands += " - help\n";
         commands += " - go <DIRECTION>, n, s, e, w\n";
@@ -156,6 +162,6 @@ public class UI {
         commands += " - use <ITEM>\n";
         commands += " - inventory or i\n";
         commands += " - quit or q";
-        return commands;
+        System.out.println(commands);
     }
 }
