@@ -110,23 +110,27 @@ public class Room {
         return items;
     }
 
-    public Room getRoomNorth(int currentRow, int currentColumn){
-        return World.getRoom(currentRow - 1, currentColumn);
+    public Room getRoomNorth(){
+        return connectingRooms.get("n");
     }
 
-    public Room getRoomWest(int currentRow, int currentColumn){
-        return World.getRoom(currentRow, currentColumn-1);
+    public Room getRoomWest(){
+        return connectingRooms.get("w");
     }
 
-    public Room getRoomSouth(int currentRow, int currentColumn){
-        return World.getRoom(currentRow + 1, currentColumn);
+    public Room getRoomSouth(){
+        return connectingRooms.get("s");
     }
 
-    public Room getRoomEast(int currentRow, int currentColumn){
-        return World.getRoom(currentRow, currentColumn + 1);
+    public Room getRoomEast(){
+        return connectingRooms.get("e");
     }
 
     public void addConnectingRoom(String direction, Room roomToAdd) {
         connectingRooms.put(direction, roomToAdd);
+    }
+
+    public void removeConnectingRoom(String direction){
+        connectingRooms.replace(direction,null);
     }
 }

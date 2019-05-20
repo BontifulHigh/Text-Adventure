@@ -42,14 +42,14 @@ public class World {
 
     public static void generateConnectingRooms(List<Room> rooms) {
         for(Room room : rooms) {
-            room.addConnectingRoom("n", room.getRoomNorth(room.getRow(), room.getColumn()));
-            room.addConnectingRoom("e", room.getRoomEast(room.getRow(), room.getColumn()));
-            room.addConnectingRoom("s", room.getRoomSouth(room.getRow(), room.getColumn()));
-            room.addConnectingRoom("w", room.getRoomWest(room.getRow(), room.getColumn()));
-            room.addConnectingRoom("north", room.getRoomNorth(room.getRow(), room.getColumn()));
-            room.addConnectingRoom("east", room.getRoomEast(room.getRow(), room.getColumn()));
-            room.addConnectingRoom("south", room.getRoomSouth(room.getRow(), room.getColumn()));
-            room.addConnectingRoom("west", room.getRoomWest(room.getRow(), room.getColumn()));
+            Room northRoom = getRoom(room.getRow()-1, room.getColumn());
+            Room eastRoom = getRoom(room.getRow(), room.getColumn()+1);
+            Room southRoom = getRoom(room.getRow()+1, room.getColumn());
+            Room westRoom = getRoom(room.getRow()-1, room.getColumn()-1);
+            room.addConnectingRoom("n", northRoom);
+            room.addConnectingRoom("e", eastRoom);
+            room.addConnectingRoom("s", southRoom);
+            room.addConnectingRoom("w", westRoom);
         }
     }
 
