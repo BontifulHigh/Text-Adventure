@@ -1,4 +1,5 @@
 package com.company;
+import java.util.Arrays;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
@@ -17,6 +18,8 @@ public class UI {
      */
     static World world;
     static Player player;
+
+    static String[] commands = {"n", "north", "e", "east", "s", "south", "w", "west"};
 
     /**
      * Constructor for a UI object.
@@ -57,11 +60,47 @@ public class UI {
                 String command = getCommand(parser);
                 String argument = getArgument(parser);
 
+<<<<<<< HEAD
                 isParsingInput = parseInput(command, argument);
+=======
+                validChoice = true;
+
+                if(command.equals("q") || command.equals("Quit"))
+
+                move(command);
+
+                if(!argument .equals("")){
+                    tryPlayerAction(argument);
+                }
+
+                switch (command) {
+                    case "help":
+                        help();
+                        break;
+                    case "inventory":
+                    case "i":
+                        player.outputInventory();
+                        break;
+                    case "map":
+                        world.printNearbyRoomsMap();
+                        break;
+                    case "q":
+                    case "quit":
+                        done = true;
+                        break;
+                    default:
+                        System.out.print("Invalid option. Use help if you're not sure what you can do.");
+                        System.out.print("\n>\t");
+                        validChoice = false;
+                        commandString = scnr.nextLine().toLowerCase();
+                        break;
+                }
+>>>>>>> origin/Refactor-Menu
             }
         }
     }
 
+<<<<<<< HEAD
     private boolean parseInput(String command, String argument) {
         // Call the appropriate command of the Player. If you add new commands,
         // add a test for the new command name here and make the appropriate
@@ -106,6 +145,23 @@ public class UI {
                 return true;
         }
         return false;
+=======
+    private void tryPlayerAction(String argument) {
+        switch(argument){
+            case "take":
+                player.tryToTakeItem(argument);
+            case "use":
+                player.tryToUseItem(argument);
+            case "go":
+                player.tryToMove(argument);
+        }
+    }
+
+    private void move(String command) {
+        if(Arrays.asList(commands).contains(command)){
+            player.tryToMove(command);
+        }
+>>>>>>> origin/Refactor-Menu
     }
 
     private String getCommand(StringTokenizer parser) {
@@ -158,8 +214,13 @@ public class UI {
         commands += " - take <ITEM>\n";
         commands += " - use <ITEM>\n";
         commands += " - inventory or i\n";
+<<<<<<< HEAD
         commands += " - quit or q\n";
         System.out.print(commands);
+=======
+        commands += " - quit or q";
+        System.out.println(commands);
+>>>>>>> origin/Refactor-Menu
     }
 
 }
