@@ -67,14 +67,14 @@ public class ReadCSV {
 
         String csvFile = "src/com/company/itemData.csv";
         String line = "";
-        String cvsSplitBy = ",(?=([^\"]*\"[^\"]*\")*[^\"]*$)";
+        String csvSplitBy = ",(?=([^\"]*\"[^\"]*\")*[^\"]*$)";
 
         try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
 
             while ((line = br.readLine()) != null) {
 
                 // use comma as separator
-                String[] itemData = line.split(cvsSplitBy);
+                String[] itemData = line.split(csvSplitBy);
                 String itemName = itemData[0].replace("\"","");
                 String itemDescription = itemData[1].replace("\"","");
                 String itemInitialLocation = itemData[2].replace("\"","");
@@ -83,6 +83,13 @@ public class ReadCSV {
 
                 Room itemInitialRoom = World.getRoom(itemInitialLocation);
                 Room triggerRoom = World.getRoom(eventTriggerLocation);
+
+                if(itemInitialRoom == null){
+                    throw new NullPointerException("Cannot find the initial room " + itemInitialLocation);
+                }
+                if(triggerRoom == null){
+                    throw new NullPointerException("Cannot find the trigger room " + eventTriggerLocation);
+                }
 
                 Item newItem = new Item(itemName, itemDescription, itemInitialRoom);
                 items.add(newItem);
