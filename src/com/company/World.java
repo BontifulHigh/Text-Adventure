@@ -42,14 +42,17 @@ public class World {
 
     public static void generateConnectingRooms(List<Room> rooms) {
         for(Room room : rooms) {
+
             Room northRoom = getRoom(room.getRow()-1, room.getColumn());
             Room eastRoom = getRoom(room.getRow(), room.getColumn()+1);
             Room southRoom = getRoom(room.getRow()+1, room.getColumn());
             Room westRoom = getRoom(room.getRow()-1, room.getColumn()-1);
+
             room.addConnectingRoom("n", northRoom);
             room.addConnectingRoom("e", eastRoom);
             room.addConnectingRoom("s", southRoom);
             room.addConnectingRoom("w", westRoom);
+
         }
     }
 
