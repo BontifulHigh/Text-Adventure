@@ -57,7 +57,6 @@ public class World {
     }
 
     public Room getStartingRoom(){
-        System.out.println(startingRoom);
         return startingRoom;
     }
 
