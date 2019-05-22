@@ -37,25 +37,26 @@ public class ReadCSV {
 
                 // use comma as separator
                 String[] roomData = line.split(cvsSplitBy);
+                checkColumns(lineNum, roomData, "roomData", "roomData.csv");
+                try {
+                    Integer.parseInt(roomData[0].trim());
+                    Integer.parseInt(roomData[1].trim());
+                } catch(NumberFormatException e){
+                    System.out.println("*** roomData - Invalid input for ROWS and COLUMNS.");
+                    System.out.println("*** roomData - Line " + lineNum + " Input for ROWS or COLUMNS must be an integer.");
+                    System.out.println("*** roomData - Line " + lineNum + " ROW: " + roomData[0].trim() + " COLUMN: " + roomData[1].trim());
+                }
+                int roomRow = Integer.parseInt(roomData[0].trim());
+                int roomColumn = Integer.parseInt(roomData[1].trim());
+                String roomName = roomData[2].replace("\"","").trim();
+                String roomDescription = roomData[3].replace("\"","").replace("\\n", "\n").trim();
 
-                checkColumns(lineNum, roomData, 4, "roomData.csv");
-
-
-                int roomRow = Integer.parseInt(roomData[0]);
-                int roomColumn = Integer.parseInt(roomData[1]);
-                String roomName = roomData[2].replace("\"","");
-                String roomDescription = roomData[3].replace("\"","").replace("\\n", "\n");
 
                 Room newRoom = new Room(roomRow, roomColumn, roomName, roomDescription);
                 rooms.add(newRoom);
 
             }
-
-        } catch (NumberFormatException e){
-            System.out.println("WARNING: Invalid input for ROW or COLUMN. This input must be an integer, and cannot have spaces.\n");
-            e.printStackTrace();
         } catch (Exception e) {
-            System.out.println("ERROR on line " + lineNum + " of roomData.csv\n");
             e.printStackTrace();
         }
 
@@ -87,22 +88,22 @@ public class ReadCSV {
                 // use comma as separator
                 String[] itemData = line.split(csvSplitBy);
 
-                checkColumns(lineNum, itemData, 5, "itemData.csv");
+                checkColumns(lineNum, itemData, "itemData", "itemData.csv");
 
-                String itemName = itemData[0].replace("\"","");
-                String itemDescription = itemData[1].replace("\"","");
-                String itemInitialLocation = itemData[2].replace("\"","");
-                String eventTriggerLocation = itemData[3].replace("\"","");
-                String eventTriggerDescription = itemData[4].replace("\"","");
+                String itemName = itemData[0].replace("\"","").trim();
+                String itemDescription = itemData[1].replace("\"","").trim();
+                String itemInitialLocation = itemData[2].replace("\"","").trim();
+                String eventTriggerLocation = itemData[3].replace("\"","").trim();
+                String eventTriggerDescription = itemData[4].replace("\"","").trim();
 
                 Room itemInitialRoom = World.getRoom(itemInitialLocation);
                 Room triggerRoom = World.getRoom(eventTriggerLocation);
 
                 if(itemInitialRoom == null){
-                    throw new NullPointerException("Error on line " + lineNum + " of itemData.csv. Cannot find the initial room \"" + itemInitialLocation+"\"");
+                    System.out.println("*** Error on line " + lineNum + " of itemData.csv. Cannot find the initial room \"" + itemInitialLocation+"\"");
                 }
                 if(triggerRoom == null){
-                    throw new NullPointerException("Error on line " + lineNum + " of itemData.csv. Cannot find the trigger room \"" + eventTriggerLocation+"\"");
+                    System.out.println("*** Error on line " + lineNum + " of itemData.csv. Cannot find the trigger room \"" + eventTriggerLocation+"\"");
                 }
 
                 Item newItem = new Item(itemName, itemDescription, itemInitialRoom);
@@ -113,7 +114,6 @@ public class ReadCSV {
             }
 
         } catch (Exception e) {
-            System.out.println("ERROR on line " + lineNum + " of itemData.csv\n");
             e.printStackTrace();
         }
 
@@ -121,18 +121,55 @@ public class ReadCSV {
 
     }
 
-    private static void checkColumns(int lineNum, String[] data, int requiredLengthOfData, String filename) {
-        if(data.length != requiredLengthOfData){
-            System.out.println("WARNING on line " + lineNum + " of " + filename + ". You have supplied " + data.length + " columns of data. The file parser was expecting " +requiredLengthOfData + " columns.\n");
-            System.out.println("Line " + lineNum + ":");
-            String dataText = "";
-            for(int i=0; i< data.length; i++){
-                dataText+=data[i];
-                if(i<data.length-1){
-                    dataText+=",";
-                }
+    private static void checkColumns(int lineNum, String[] data, String dataName, String filename) {
+        int requiredLengthOfData = 0;
+        if(dataName.equals("itemData")){ requiredLengthOfData = 5; }
+        if(dataName.equals("roomData")){ requiredLengthOfData = 4; }
+
+        String dataText = "";
+        for(int i=0; i< data.length; i++){
+            dataText+=data[i];
+            if(i<data.length-1){
+                dataText+=",";
             }
-            System.out.println(dataText);
         }
+
+
+        int expectedNumQuotes = 0;
+        if(dataName.equals("itemData")){ expectedNumQuotes = 10; }
+        if(dataName.equals("roomData")){ expectedNumQuotes = 4; }
+
+
+        if(!validQuoteCount(dataText, expectedNumQuotes)){
+            System.out.println("*** " + dataName + " - ERROR ON Line " + lineNum + ".");
+            System.out.println("*** " + dataName + " - ERROR INVALID NUMBER OF QUOTES");
+            System.out.println("*** " + dataName + " - Num Quotes expected: " + expectedNumQuotes + ". Num Quotes found: " + getNumQuotes(dataText));
+            System.out.println("*** " + dataName + " - Line " + lineNum + " contents: " + dataText);
+        }
+        else {
+            if(data.length != requiredLengthOfData){
+                System.out.println("*** " + dataName + " - ERROR ON Line " + lineNum + ".");
+                System.out.println("*** " + dataName + " - Line " + lineNum + " contents: " + dataText);
+                System.out.println("*** " + dataName + " - WARNING on line " + lineNum + ". You have supplied " + data.length + " columns of data. The file parser was expecting " +requiredLengthOfData + " columns.");
+            }
+        }
+    }
+
+    private static boolean validQuoteCount(String data, int expectedNumQuotes) {
+        int numQuotes = getNumQuotes(data);
+        if(numQuotes!= expectedNumQuotes) {
+            return false;
+        }
+        return true;
+    }
+
+    private static int getNumQuotes(String data) {
+        int numQuotes=0;
+        int index = data.indexOf("\"");
+        while (index >= 0){
+            numQuotes++;
+            index = data.indexOf("\"", index + 1);
+        }
+        return numQuotes;
     }
 }
