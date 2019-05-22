@@ -1,5 +1,8 @@
 package com.company;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * A Room is a "location" in the adventure game. A room has a name,
@@ -15,6 +18,7 @@ public class Room {
     private String name;
     private String description;
     private ArrayList<Item> items = new ArrayList<Item>();
+    private HashMap<String, Room> connectingRooms = new HashMap<>();
 
     /**
      * Constructor for objects of class Room.
@@ -28,6 +32,20 @@ public class Room {
         column = roomColumn;
         name = roomName;
         description = roomDescription;
+    }
+
+    public Room getConnectingRoom(String direction){
+        return connectingRooms.get(direction);
+    }
+
+    public ArrayList<String> getConnectingDirections(){
+        ArrayList<String> directions = new ArrayList<>();
+        for(Map.Entry<String, Room> roomEntry : connectingRooms.entrySet()) {
+            if(roomEntry.getValue() != null) {
+                directions.add(roomEntry.getKey());
+            }
+        }
+        return directions;
     }
 
     /**
@@ -90,5 +108,29 @@ public class Room {
      */
     public ArrayList<Item> getItems() {
         return items;
+    }
+
+    public Room getRoomNorth(){
+        return connectingRooms.get("n");
+    }
+
+    public Room getRoomWest(){
+        return connectingRooms.get("w");
+    }
+
+    public Room getRoomSouth(){
+        return connectingRooms.get("s");
+    }
+
+    public Room getRoomEast(){
+        return connectingRooms.get("e");
+    }
+
+    public void addConnectingRoom(String direction, Room roomToAdd) {
+        connectingRooms.put(direction, roomToAdd);
+    }
+
+    public void removeConnectingRoom(String direction){
+        connectingRooms.replace(direction,null);
     }
 }

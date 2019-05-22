@@ -21,8 +21,8 @@ public class Game {
      * @param args Arguments.
      */
     public static void main(String[] args) {
-        player = new Player();
-        world = new World(player);
+        world = new World();
+        player = new Player(world.getStartingRoom());
         ui = new UI(player, world);
         ui.menu();
     }
