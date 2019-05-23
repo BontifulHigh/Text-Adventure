@@ -55,7 +55,7 @@ Here is a template that you can work with for this write-up report.
 
 *Analysis:*
 
-\
+
 The following is a sample of what this write-up report might look like:
 
 &nbsp;&nbsp;&nbsp;&nbsp;*Feature Description:* 
@@ -78,3 +78,12 @@ If they chose to fight the monster, then they would have a 50% chance of winning
 
 &nbsp;&nbsp;&nbsp;&nbsp;*Analysis:* Although I was able to get this fight to trigger in the "Treasure" room, I wasn't able to figure out how to end the game.
 Instead, my program just said "You win!" and then continued to play. If I had more time for this assignment, I would have tried to find out how to end the game.
+
+**Submission**
+Prepare the following items for submission:
+1. roomData.csv
+2. itemData.csv
+3. ONE of the .java files that you edited to added
+4. Your written report
+
+[Link to submission form](https://forms.gle/StD8fMAqJyVV2q576)
