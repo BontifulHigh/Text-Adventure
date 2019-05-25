@@ -21,7 +21,7 @@ public class Game {
      * @param args Arguments.
      */
     public static void main(String[] args) {
-        world = new World();
+        world = new World("src/com/company/newRoomData.txt", "src/com/company/itemData.csv");
         player = new Player(world.getStartingRoom());
         ui = new UI(player, world);
         ui.menu();

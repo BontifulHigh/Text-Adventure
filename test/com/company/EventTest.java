@@ -23,11 +23,11 @@ class EventTest {
 
     @BeforeEach
     void setUp() {
-        triggerRoom1 = new Room(0,0,"TestRoom1", "Room 1 description.");
+        triggerRoom1 = new Room(0, "TestRoom1", "Room 1 description.");
         triggerItem1 = new Item("TestItem1","Item 1 description.",triggerRoom1);
         triggerEvent1 = new Event(triggerRoom1, triggerItem1, "Event 1 triggered.");
 
-        triggerRoom2 = new Room(0,1,"TestRoom2", "Room 2 description.");
+        triggerRoom2 = new Room(1, "TestRoom2", "Room 2 description.");
         triggerItem2 = new Item("TestItem1","Item 2 description.",triggerRoom1);
         triggerEvent2 = new Event(triggerRoom2, triggerItem2, "Event 2 triggered.");
     }

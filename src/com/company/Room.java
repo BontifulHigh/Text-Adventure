@@ -1,8 +1,5 @@
 package com.company;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 /**
  * A Room is a "location" in the adventure game. A room has a name,
@@ -13,55 +10,46 @@ import java.util.Map;
  */
 public class Room {
 
-    private int column;
-    private int row;
+    private int roomNumber;
     private String name;
     private String description;
     private ArrayList<Item> items = new ArrayList<Item>();
-    private HashMap<String, Room> connectingRooms = new HashMap<>();
+    private int[] surroundingRooms = new int[4];
 
     /**
      * Constructor for objects of class Room.
-     * @param roomRow row number of the room.
-     * @param roomColumn column number of the room.
+     * @param roomNum
      * @param roomName name of the room.
      * @param roomDescription a detailed description of what the player can see in the room.
      */
-    public Room(int roomRow, int roomColumn, String roomName, String roomDescription){
-        row = roomRow;
-        column = roomColumn;
+    public Room(int roomNum, String roomName, String roomDescription){
+        roomNumber = roomNum;
         name = roomName;
         description = roomDescription;
     }
 
-    public Room getConnectingRoom(String direction){
-        return connectingRooms.get(direction);
-    }
-
-    public ArrayList<String> getConnectingDirections(){
-        ArrayList<String> directions = new ArrayList<>();
-        for(Map.Entry<String, Room> roomEntry : connectingRooms.entrySet()) {
-            if(roomEntry.getValue() != null) {
-                directions.add(roomEntry.getKey());
-            }
+    public void addSurroundingRoom(String direction, int roomNum) {
+        switch(direction){
+            case "n":
+                surroundingRooms[0] = roomNum;
+                break;
+            case "e":
+                surroundingRooms[1] = roomNum;
+                break;
+            case "s":
+                surroundingRooms[2] = roomNum;
+                break;
+            case "w":
+                surroundingRooms[3] = roomNum;
+                break;
+            default:
+                System.out.println("Unable to recognize that direction.");
+                break;
         }
-        return directions;
     }
 
-    /**
-     * Returns the column number of this room.
-     * @return the column number of this room.
-     */
-    public int getColumn(){
-        return column;
-    }
-
-    /**
-     * Returns the row number of this room.
-     * @return the row number of this room.
-     */
-    public int getRow(){
-        return row;
+    public int getRoomNumber(){
+        return roomNumber;
     }
 
     /**
@@ -111,26 +99,43 @@ public class Room {
     }
 
     public Room getRoomNorth(){
-        return connectingRooms.get("n");
-    }
-
-    public Room getRoomWest(){
-        return connectingRooms.get("w");
-    }
-
-    public Room getRoomSouth(){
-        return connectingRooms.get("s");
+        return World.getRoom(surroundingRooms[0]);
     }
 
     public Room getRoomEast(){
-        return connectingRooms.get("e");
+        return World.getRoom(surroundingRooms[1]);
     }
 
-    public void addConnectingRoom(String direction, Room roomToAdd) {
-        connectingRooms.put(direction, roomToAdd);
+    public Room getRoomSouth(){
+        return World.getRoom(surroundingRooms[2]);
     }
 
-    public void removeConnectingRoom(String direction){
-        connectingRooms.replace(direction,null);
+    public Room getRoomWest(){
+        return World.getRoom(surroundingRooms[3]);
+    }
+
+    public void removeSurroundingRoom(String direction){
+
+        switch(direction){
+            case "n":
+                surroundingRooms[0] = -1;
+                break;
+            case "e":
+                surroundingRooms[1] = -1;
+                break;
+            case "s":
+                surroundingRooms[2] = -1;
+                break;
+            case "w":
+                surroundingRooms[3] = -1;
+                break;
+            default:
+                System.out.println("Unable to recognize that direction.");
+                break;
+        }
+    }
+
+    public int[] getSurroundingRooms() {
+        return surroundingRooms;
     }
 }

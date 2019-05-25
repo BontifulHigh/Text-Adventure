@@ -1,0 +1,4 @@
+--TODO Support checking if a room exists when that direction is added.
+--     Example: If a room has a room to it's west, does that room actually exist?
+--TODO Add more robust tests to make sure that rooms are generating properly
+--TODO Special Rooms- How to implement?

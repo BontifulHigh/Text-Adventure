@@ -160,9 +160,24 @@ public class Player {
      * @return  true if the move was successful.
      */
     public void tryToMove(String direction){
-        int currentRow = getCurrentRoom().getRow();
-        int currentColumn = getCurrentRoom().getColumn();
-        Room newRoom = getCurrentRoom().getConnectingRoom(direction);
+        Room newRoom = null;
+        switch(direction){
+            case "n":
+                newRoom = getCurrentRoom().getRoomNorth();
+                break;
+            case "e":
+                newRoom = getCurrentRoom().getRoomEast();
+                break;
+            case "s":
+                newRoom = getCurrentRoom().getRoomSouth();
+                break;
+            case "w":
+                newRoom = getCurrentRoom().getRoomWest();
+                break;
+            default:
+                System.out.println("Unable to recognize that direction.");
+                break;
+        }
 
         if(newRoom != null){
             setCurrentRoom(newRoom);

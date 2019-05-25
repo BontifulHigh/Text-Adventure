@@ -4,7 +4,6 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -18,16 +17,18 @@ class RoomTest {
     Room wRoom;
     Item item1;
     Item item2;
+    World world;
     private HashMap<String, Room> connectingRoomsTest;
 
     @BeforeEach
     void setUp() {
-        testingRoom = new Room(1,1,"TestRoom","This is the Test room.");
+        world = new World("test/com/company/roomDataTest.txt", "test/com/company/itemDataTest.csv");
+        testingRoom = new Room(101, "TestRoom", "This is the Test room.");
+        world.addRoom(testingRoom);
         item1 = new Item("item1","Test item 1",testingRoom);
         item2 = new Item("item2","Test item 2",testingRoom);
         testingRoom.addItem(item1);
         testingRoom.addItem(item2);
-        connectingRoomsTest = new HashMap<String, Room>();
     }
 
     @AfterEach
@@ -37,24 +38,12 @@ class RoomTest {
     @Test
     void getConnectingDirections() {
 
-        nRoom = new Room(0,1,"North Room","This room is to the North");
-        testingRoom.addConnectingRoom("n",nRoom);
-        ArrayList<String> connectingDirs = testingRoom.getConnectingDirections();
+        nRoom = new Room(102, "North Room", "This room is to the North");
+        testingRoom.addSurroundingRoom("n",1);
+        int[] connectingDirs = testingRoom.getSurroundingRooms();
 
-        assertTrue(connectingDirs.contains("n"));
+        assertTrue(connectingDirs[0]!=-1);
 
-    }
-
-    @Test
-    void getColumn() {
-        int roomNum = testingRoom.getColumn();
-        assertEquals(1,roomNum);
-    }
-
-    @Test
-    void getRow() {
-        int roomNum = testingRoom.getRow();
-        assertEquals(1,roomNum);
     }
 
     @Test
@@ -84,44 +73,64 @@ class RoomTest {
 
     @Test
     void getConnectingRooms(){
-        nRoom = new Room(0,1,"North Room","This room is to the North");
-        eRoom = new Room(1,2,"East Room","This room is to the East");
-        sRoom = new Room(2,1,"South Room","This room is to the South");
-        wRoom = new Room(1,0,"West Room","This room is to the West");
+        nRoom = new Room(102, "North Room", "This room is to the North");
+        eRoom = new Room(103, "East Room", "This room is to the East");
+        sRoom = new Room(104, "South Room", "This room is to the South");
+        wRoom = new Room(105, "West Room", "This room is to the West");
 
-        testingRoom.addConnectingRoom("n",nRoom);
-        testingRoom.addConnectingRoom("e",eRoom);
-        testingRoom.addConnectingRoom("s",sRoom);
-        testingRoom.addConnectingRoom("w",wRoom);
+        world.addRoom(nRoom);
+        world.addRoom(eRoom);
+        world.addRoom(sRoom);
+        world.addRoom(wRoom);
 
-        Room northRoom = testingRoom.getConnectingRoom("n");
-        Room eastRoom = testingRoom.getConnectingRoom("e");
-        Room southRoom = testingRoom.getConnectingRoom("s");
-        Room westRoom = testingRoom.getConnectingRoom("w");
+        testingRoom.addSurroundingRoom("n",102);
+        testingRoom.addSurroundingRoom("e",103);
+        testingRoom.addSurroundingRoom("s",104);
+        testingRoom.addSurroundingRoom("w",105);
 
-        assertEquals(nRoom,northRoom);
-        assertEquals(eRoom,eastRoom);
-        assertEquals(sRoom,southRoom);
-        assertEquals(wRoom,westRoom);
+        Room northRoom = testingRoom.getRoomNorth();
+        Room eastRoom = testingRoom.getRoomEast();
+        Room southRoom = testingRoom.getRoomSouth();
+        Room westRoom = testingRoom.getRoomWest();
 
+        assertEquals(sRoom, testingRoom.getRoomSouth());
+
+
+    }
+
+    @Test
+    void worldGetRoom(){
+        assertNotNull(world.getRoom("TestRoom"));
+    }
+
+    @Test
+    void removeRoom(){
+        world.removeRoom(testingRoom);
+        assertNull(world.getRoom("TestRoom"));
+        world.addRoom(testingRoom);
+        world.addRoom(testingRoom);
+        world.removeRoom(testingRoom);
+        assertNotNull(world.getRoom("TestRoom"));
+        world.removeRoom(testingRoom);
+        assertNull(world.getRoom("TestRoom"));
     }
 
     @Test
     void removeConnectingRoom1(){
-        nRoom = new Room(0,1,"North Room","This room is to the North");
-        testingRoom.addConnectingRoom("n",nRoom);
-        testingRoom.removeConnectingRoom("n");
-        assertNull(testingRoom.getConnectingRoom("n"));
+        nRoom = new Room(102, "North Room", "This room is to the North");
+        testingRoom.addSurroundingRoom("n",102);
+        testingRoom.removeSurroundingRoom("n");
+        assertNull(testingRoom.getRoomNorth());
     }
 
     @Test
     void removeConnectingRoom2(){
-        nRoom = new Room(0, 1, "North Room", "This room is to the North");
-        testingRoom.addConnectingRoom("n",nRoom);
-        testingRoom.removeConnectingRoom("n");
-        testingRoom.removeConnectingRoom("n");
-        testingRoom.removeConnectingRoom("n");
-        assertNull(testingRoom.getConnectingRoom("n"));
+        nRoom = new Room(103, "North Room", "This room is to the North");
+        testingRoom.addSurroundingRoom("n",103);
+        testingRoom.removeSurroundingRoom("n");
+        testingRoom.removeSurroundingRoom("n");
+        testingRoom.removeSurroundingRoom("n");
+        assertNull(testingRoom.getRoomNorth());
     }
 
     @Test

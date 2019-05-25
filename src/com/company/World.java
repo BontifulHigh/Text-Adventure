@@ -1,8 +1,6 @@
 package com.company;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * This class represents the whole world. It constructs the rooms and gives us the ability
@@ -31,29 +29,41 @@ public class World {
      * <li>populate the items and place them into their appropriate rooms</li>
      * </ol>
      */
-    public World(){
+    public World(String roomFile, String itemFile){
         //map = myMap();
-        map = ReadCSV.readRoomData();
-        items = ReadCSV.readItemData();
+        map = ReadCSV.readRoomData(roomFile);
+        items = ReadCSV.readItemData(itemFile);
         placeItemsInRooms();
         generateConnectingRooms(map);
-        startingRoom = getRoom("Living Room");
+        startingRoom = getRoom("A");
     }
 
     public static void generateConnectingRooms(List<Room> rooms) {
         for(Room room : rooms) {
-
-            Room northRoom = getRoom(room.getRow()-1, room.getColumn());
-            Room eastRoom = getRoom(room.getRow(), room.getColumn()+1);
-            Room southRoom = getRoom(room.getRow()+1, room.getColumn());
-            Room westRoom = getRoom(room.getRow()-1, room.getColumn()-1);
-
+            /*
             room.addConnectingRoom("n", northRoom);
             room.addConnectingRoom("e", eastRoom);
             room.addConnectingRoom("s", southRoom);
             room.addConnectingRoom("w", westRoom);
-
+            */
         }
+    }
+
+    public void addRoom(Room room){
+        map.add(room);
+    }
+
+    public void removeRoom(Room roomToRemove){
+        int roomNum = roomToRemove.getRoomNumber();
+        for(Room room : map){
+            int[] rooms = room.getSurroundingRooms();
+            for(int i=0; i< rooms.length; i++){
+                if(rooms[i] == roomNum){
+                    rooms[i] = -1;
+                }
+            }
+        }
+        map.remove(roomToRemove);
     }
 
     public Room getStartingRoom(){
@@ -70,14 +80,13 @@ public class World {
 
     /**
      * Search through our map to find a specific room
-     * @param currentRow row of the room that we're trying to find.
-     * @param currentColumn column of the room that we're trying to find.
+     * @param roomNum room number of the room that we're trying to find.
      * @return true if there is room at the indicated row and column.
      */
 
-    public static Room getRoom(int currentRow, int currentColumn) {
+    public static Room getRoom(int roomNum) {
         for(Room room : map){
-            if (room.getRow() == currentRow && room.getColumn() == currentColumn) {
+            if (room.getRoomNumber() ==  roomNum) {
                 return room;
             }
         }
@@ -117,16 +126,16 @@ public class World {
     }
 
     private String getDirectionDetails(Room room, String details) {
-        if (room.getConnectingRoom("n") != null) {
+        if (room.getRoomNorth() != null) {
             details +=" [North]";
         }
-        if (room.getConnectingRoom("s") != null) {
+        if (room.getRoomSouth() != null) {
             details +=" [South]";
         }
-        if (room.getConnectingRoom("e") != null) {
+        if (room.getRoomEast() != null) {
             details+=" [East]";
         }
-        if (room.getConnectingRoom("w") != null) {
+        if (room.getRoomWest() != null) {
             details+=" [West]";
         }
         return details;
@@ -134,8 +143,17 @@ public class World {
 
     public void updateNearbyRoomsMap(Room room){
         resetNearbyRoomsMap();
-        for(String direction : room.getConnectingDirections()){
-            addNearbyRoom(direction);
+        if(room.getRoomNorth() != null){
+            addNearbyRoom("n");
+        }
+        if(room.getRoomEast() != null){
+            addNearbyRoom("e");
+        }
+        if(room.getRoomSouth() != null){
+            addNearbyRoom("s");
+        }
+        if(room.getRoomWest() != null){
+            addNearbyRoom("w");
         }
     }
 

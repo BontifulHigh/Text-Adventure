@@ -16,10 +16,11 @@ public class ReadCSV {
      * Each room is then added to a rooms list.
      * @return The list of rooms that have been created.
      */
-    public static ArrayList<Room> readRoomData() {
+    public static ArrayList<Room> readRoomData(String roomFile) {
         ArrayList<Room> rooms = new ArrayList<Room>();
 
-        String csvFile = "src/com/company/roomData.csv";
+        String csvFile = roomFile;
+        // Expected File Format: [ INTEGER Room Num ], [ STRING Room Name ], [ STRING Room Description ], [ INT North Room ], [ INT East Room ], [ INT South Room ], [ INT West Room ]
         String line = "";
 
         /*
@@ -40,19 +41,49 @@ public class ReadCSV {
                 checkColumns(lineNum, roomData, "roomData", "roomData.csv");
                 try {
                     Integer.parseInt(roomData[0].trim());
-                    Integer.parseInt(roomData[1].trim());
-                } catch(NumberFormatException e){
-                    System.out.println("*** roomData - Invalid input for ROWS and COLUMNS.");
-                    System.out.println("*** roomData - Line " + lineNum + " Input for ROWS or COLUMNS must be an integer.");
-                    System.out.println("*** roomData - Line " + lineNum + " ROW: " + roomData[0].trim() + " COLUMN: " + roomData[1].trim());
+                } catch(NumberFormatException e) {
+                    System.out.println("*** roomData - Line " + lineNum + " - Invalid input for Room Number");
                 }
-                int roomRow = Integer.parseInt(roomData[0].trim());
-                int roomColumn = Integer.parseInt(roomData[1].trim());
-                String roomName = roomData[2].replace("\"","").trim();
-                String roomDescription = roomData[3].replace("\"","").replace("\\n", "\n").trim();
 
 
-                Room newRoom = new Room(roomRow, roomColumn, roomName, roomDescription);
+                int roomNum = Integer.parseInt(roomData[0].trim());
+                String roomName = roomData[1].replace("\"","").trim();
+                String roomDescription = roomData[2].replace("\"","").replace("\\n", "\n").trim();
+
+                int northRoomNum;
+                int eastRoomNum;
+                int southRoomNum;
+                int westRoomNum;
+                if(roomData[3].equals("x")){
+                    northRoomNum = -1;
+                }
+                else {
+                    northRoomNum = Integer.parseInt(roomData[3].trim());
+                }
+                if(roomData[4].equals("x")){
+                    eastRoomNum = -1;
+                }
+                else {
+                    eastRoomNum = Integer.parseInt(roomData[4].trim());
+                }
+                if(roomData[5].equals("x")){
+                    southRoomNum = -1;
+                }
+                else {
+                    southRoomNum = Integer.parseInt(roomData[5].trim());
+                }
+                if(roomData[6].equals("x")){
+                    westRoomNum = -1;
+                }
+                else {
+                    westRoomNum = Integer.parseInt(roomData[6].trim());
+                }
+
+                Room newRoom = new Room(roomNum, roomName, roomDescription);
+                newRoom.addSurroundingRoom("n", northRoomNum);
+                newRoom.addSurroundingRoom("e", eastRoomNum);
+                newRoom.addSurroundingRoom("s", southRoomNum);
+                newRoom.addSurroundingRoom("w", westRoomNum);
                 rooms.add(newRoom);
 
             }
@@ -72,10 +103,10 @@ public class ReadCSV {
      * </ol>
      * @return List of Items created.
      */
-    public static ArrayList<Item> readItemData(){
+    public static ArrayList<Item> readItemData(String itemFile){
         ArrayList<Item> items = new ArrayList<Item>();
 
-        String csvFile = "src/com/company/itemData.csv";
+        String csvFile = itemFile;
         String line = "";
         String csvSplitBy = ",(?=([^\"]*\"[^\"]*\")*[^\"]*$)";
         int lineNum = 0;
@@ -124,7 +155,7 @@ public class ReadCSV {
     private static void checkColumns(int lineNum, String[] data, String dataName, String filename) {
         int requiredLengthOfData = 0;
         if(dataName.equals("itemData")){ requiredLengthOfData = 5; }
-        if(dataName.equals("roomData")){ requiredLengthOfData = 4; }
+        if(dataName.equals("roomData")){ requiredLengthOfData = 7; }
 
         String dataText = "";
         for(int i=0; i< data.length; i++){
