@@ -7,27 +7,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4f714d94-77d6-4ec2-9578-69bb759aa3bd" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/ToDo.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/com/company/itemDataTest.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/com/company/roomDataTest.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Text Adventure/com/company/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Text Adventure/com/company/Game.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Text Adventure/com/company/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Text Adventure/com/company/Player.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Text Adventure/com/company/ReadCSV.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Text Adventure/com/company/ReadCSV.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Text Adventure/com/company/Room.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Text Adventure/com/company/Room.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Text Adventure/com/company/World.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Text Adventure/com/company/World.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Text Adventure/com/company/itemData.csv" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Text Adventure/com/company/itemData.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/Text Adventure/com/company/EventTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/Text Adventure/com/company/EventTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/Text Adventure/com/company/RoomTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/Text Adventure/com/company/RoomTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ToDo.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ToDo.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/ReadCSV.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/ReadCSV.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Room.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/World.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/World.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/itemData.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/itemData.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/com/company/EventTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/com/company/EventTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/newRoomData.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/newRoomData.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/com/company/RoomTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/com/company/RoomTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/com/company/roomDataTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/test/com/company/roomDataTest.txt" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -47,16 +33,16 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/World.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="100" column="30" selection-start-line="100" selection-start-column="23" selection-end-line="100" selection-end-column="30" />
+            <state relative-caret-position="409">
+              <caret line="82" column="49" selection-start-line="82" selection-start-column="49" selection-end-line="82" selection-end-column="49" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1745#1746#0" expanded="true" />
-                <element signature="e#1769#1770#0" expanded="true" />
-                <element signature="e#2251#2252#0" expanded="true" />
-                <element signature="e#2286#2287#0" expanded="true" />
-                <element signature="e#2442#2443#0" expanded="true" />
-                <element signature="e#2475#2476#0" expanded="true" />
+                <element signature="e#3011#3012#0" expanded="true" />
+                <element signature="e#3040#3041#0" expanded="true" />
+                <element signature="e#3459#3460#0" expanded="true" />
+                <element signature="e#3494#3495#0" expanded="true" />
+                <element signature="e#3650#3651#0" expanded="true" />
+                <element signature="e#3683#3684#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -71,11 +57,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/company/ReadCSV.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="57" column="32" selection-start-line="57" selection-start-column="20" selection-end-line="57" selection-end-column="32" />
+            <state relative-caret-position="153">
+              <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -83,11 +69,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ToDo.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="24" selection-start-column="24" selection-end-column="24" />
+            <state relative-caret-position="17">
+              <caret line="1" column="39" lean-forward="true" selection-start-line="1" selection-start-column="39" selection-end-line="1" selection-end-column="39" />
             </state>
           </provider>
         </entry>
@@ -95,11 +81,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/com/company/RoomTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1020">
-              <caret line="111" column="38" selection-start-line="111" selection-start-column="38" selection-end-line="111" selection-end-column="38" />
+            <state relative-caret-position="-34">
+              <caret line="67" column="5" lean-forward="true" selection-start-line="67" selection-start-column="5" selection-end-line="67" selection-end-column="5" />
               <folding>
-                <element signature="e#2615#2616#0" expanded="true" />
-                <element signature="e#2671#2672#0" expanded="true" />
+                <element signature="e#2641#2642#0" expanded="true" />
+                <element signature="e#2697#2698#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -109,7 +95,7 @@
         <entry file="file://$PROJECT_DIR$/test/com/company/roomDataTest.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="289">
-              <caret line="17" column="35" selection-start-line="17" selection-start-column="35" selection-end-line="17" selection-end-column="35" />
+              <caret line="17" column="25" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -125,7 +111,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/com/company/EventTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
+            <state relative-caret-position="-31">
               <caret line="24" column="18" selection-start-line="24" selection-start-column="18" selection-end-line="24" selection-end-column="18" />
             </state>
           </provider>
@@ -134,8 +120,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/newRoomData.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="35" lean-forward="true" selection-end-line="17" selection-end-column="35" />
+            <state relative-caret-position="289">
+              <caret line="17" column="25" lean-forward="true" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -143,8 +129,33 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/Room.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="122">
-              <caret line="116" column="33" selection-start-line="116" selection-start-column="33" selection-end-line="116" selection-end-column="33" />
+            <state relative-caret-position="2023">
+              <caret line="119" column="30" selection-start-line="119" selection-start-column="30" selection-end-line="119" selection-end-column="30" />
+              <folding>
+                <element signature="e#1354#1355#0" expanded="true" />
+                <element signature="e#1387#1388#0" expanded="true" />
+                <element signature="e#1509#1510#0" expanded="true" />
+                <element signature="e#1536#1537#0" expanded="true" />
+                <element signature="e#2054#2055#0" expanded="true" />
+                <element signature="e#2085#2086#0" expanded="true" />
+                <element signature="e#2236#2237#0" expanded="true" />
+                <element signature="e#2270#2271#0" expanded="true" />
+                <element signature="e#2439#2440#0" expanded="true" />
+                <element signature="e#2467#2468#0" expanded="true" />
+                <element signature="e#2500#2501#0" expanded="true" />
+                <element signature="e#2556#2557#0" expanded="true" />
+                <element signature="e#2588#2589#0" expanded="true" />
+                <element signature="e#2644#2645#0" expanded="true" />
+                <element signature="e#2677#2678#0" expanded="true" />
+                <element signature="e#2733#2734#0" expanded="true" />
+                <element signature="e#2765#2766#0" expanded="true" />
+                <element signature="e#2821#2822#0" expanded="true" />
+                <element signature="e#3015#3016#0" expanded="true" />
+                <element signature="e#3079#3080#0" expanded="true" />
+                <element signature="e#3136#3137#0" expanded="true" />
+                <element signature="e#3202#3203#0" expanded="true" />
+                <element signature="e#3281#3282#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -162,9 +173,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>(Player</find>
-      <find>Player player</find>
-      <find>UI.player.</find>
       <find>header</find>
       <find>base_url</find>
       <find>black</find>
@@ -192,6 +200,9 @@
       <find>player</find>
       <find>world.</find>
       <find>map</find>
+      <find>Description</find>
+      <find>surroundingRoom</find>
+      <find>SurroundingRoom</find>
     </findStrings>
     <replaceStrings>
       <replace>currentRow</replace>
@@ -205,6 +216,9 @@
       <replace>green</replace>
       <replace>***</replace>
       <replace>.equals(</replace>
+      <replace>room</replace>
+      <replace>connectingRoom</replace>
+      <replace>ConnectingRoom</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -238,17 +252,17 @@
         <option value="$PROJECT_DIR$/src/com/company/roomData.csv" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/_includes/nav.html" />
-        <option value="$PROJECT_DIR$/src/com/company/newRoomData.txt" />
         <option value="$PROJECT_DIR$/test/com/company/EventTest.java" />
         <option value="$PROJECT_DIR$/src/com/company/itemData.csv" />
         <option value="$PROJECT_DIR$/src/com/company/Player.java" />
-        <option value="$PROJECT_DIR$/src/com/company/ReadCSV.java" />
         <option value="$PROJECT_DIR$/src/com/company/Game.java" />
+        <option value="$PROJECT_DIR$/src/com/company/ReadCSV.java" />
         <option value="$PROJECT_DIR$/test/com/company/roomDataTest.txt" />
+        <option value="$PROJECT_DIR$/src/com/company/newRoomData.txt" />
+        <option value="$PROJECT_DIR$/ToDo.txt" />
         <option value="$PROJECT_DIR$/src/com/company/Room.java" />
         <option value="$PROJECT_DIR$/src/com/company/World.java" />
         <option value="$PROJECT_DIR$/test/com/company/RoomTest.java" />
-        <option value="$PROJECT_DIR$/ToDo.txt" />
       </list>
     </option>
   </component>
@@ -264,6 +278,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="Course" />
       <pane id="ProjectPane">
         <subPane>
@@ -298,8 +314,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -351,7 +365,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.RoomTest.removeRoom">
+  <component name="RunManager" selected="JUnit.RoomTest">
     <configuration name="Game" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="com.company.Game" />
       <module name="Text Adventure" />
@@ -448,9 +462,9 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.RoomTest" />
         <item itemvalue="JUnit.RoomTest.removeRoom" />
         <item itemvalue="JUnit.RoomTest.worldGetRoom" />
-        <item itemvalue="JUnit.RoomTest" />
         <item itemvalue="JUnit.RoomTest.getConnectingRooms" />
         <item itemvalue="JUnit.RoomTest.getConnectingDirections" />
       </list>
@@ -470,18 +484,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="RoomTest_getConnectingRooms - 2019.05.25 at 12h 43m 48s.xml">
-      <configuration name="RoomTest.getConnectingRooms" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="RoomTest - 2019.05.25 at 12h 43m 54s.xml">
-      <configuration name="RoomTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="RoomTest_worldGetRoom - 2019.05.25 at 13h 41m 59s.xml">
-      <configuration name="RoomTest.worldGetRoom" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="RoomTest_removeRoom - 2019.05.25 at 13h 42m 06s.xml">
-      <configuration name="RoomTest.removeRoom" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="RoomTest_worldGetRoom - 2019.05.25 at 13h 42m 43s.xml">
       <configuration name="RoomTest.worldGetRoom" configurationId="JUnit" />
     </history-entry>
@@ -500,6 +502,18 @@
     <history-entry file="RoomTest_removeRoom - 2019.05.25 at 13h 44m 27s.xml">
       <configuration name="RoomTest.removeRoom" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="RoomTest_removeRoom - 2019.05.29 at 17h 36m 26s.xml">
+      <configuration name="RoomTest.removeRoom" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="RoomTest - 2019.05.29 at 22h 09m 33s.xml">
+      <configuration name="RoomTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="RoomTest - 2019.05.29 at 22h 12m 18s.xml">
+      <configuration name="RoomTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="RoomTest - 2019.05.29 at 22h 12m 30s.xml">
+      <configuration name="RoomTest" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -514,7 +528,7 @@
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49840257" visible="true" weight="0.18869936" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49840257" visible="true" weight="0.19083156" />
       <window_info id="Structure" order="1" sideWeight="0.50159746" side_tool="true" weight="0.18017058" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -683,24 +697,89 @@
       </provider>
       <provider selected="true" editor-type-id="csv-text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/com/company/EventTest.java">
+    <entry file="file://$PROJECT_DIR$/test/com/company/itemDataTest.csv">
+      <provider editor-type-id="csv-table-editor">
+        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
+      </provider>
+      <provider selected="true" editor-type-id="csv-text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/com/company/roomDataTest.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
-          <caret line="24" column="18" selection-start-line="24" selection-start-column="18" selection-end-line="24" selection-end-column="18" />
+          <caret line="17" column="25" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/newRoomData.txt">
+    <entry file="file://$PROJECT_DIR$/ToDo.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="35" lean-forward="true" selection-end-line="17" selection-end-column="35" />
+        <state relative-caret-position="17">
+          <caret line="1" column="39" lean-forward="true" selection-start-line="1" selection-start-column="39" selection-end-line="1" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/com/company/EventTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-31">
+          <caret line="24" column="18" selection-start-line="24" selection-start-column="18" selection-end-line="24" selection-end-column="18" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/Room.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="122">
-          <caret line="116" column="33" selection-start-line="116" selection-start-column="33" selection-end-line="116" selection-end-column="33" />
+        <state relative-caret-position="2023">
+          <caret line="119" column="30" selection-start-line="119" selection-start-column="30" selection-end-line="119" selection-end-column="30" />
+          <folding>
+            <element signature="e#1354#1355#0" expanded="true" />
+            <element signature="e#1387#1388#0" expanded="true" />
+            <element signature="e#1509#1510#0" expanded="true" />
+            <element signature="e#1536#1537#0" expanded="true" />
+            <element signature="e#2054#2055#0" expanded="true" />
+            <element signature="e#2085#2086#0" expanded="true" />
+            <element signature="e#2236#2237#0" expanded="true" />
+            <element signature="e#2270#2271#0" expanded="true" />
+            <element signature="e#2439#2440#0" expanded="true" />
+            <element signature="e#2467#2468#0" expanded="true" />
+            <element signature="e#2500#2501#0" expanded="true" />
+            <element signature="e#2556#2557#0" expanded="true" />
+            <element signature="e#2588#2589#0" expanded="true" />
+            <element signature="e#2644#2645#0" expanded="true" />
+            <element signature="e#2677#2678#0" expanded="true" />
+            <element signature="e#2733#2734#0" expanded="true" />
+            <element signature="e#2765#2766#0" expanded="true" />
+            <element signature="e#2821#2822#0" expanded="true" />
+            <element signature="e#3015#3016#0" expanded="true" />
+            <element signature="e#3079#3080#0" expanded="true" />
+            <element signature="e#3136#3137#0" expanded="true" />
+            <element signature="e#3202#3203#0" expanded="true" />
+            <element signature="e#3281#3282#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/com/company/RoomTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-34">
+          <caret line="67" column="5" lean-forward="true" selection-start-line="67" selection-start-column="5" selection-end-line="67" selection-end-column="5" />
+          <folding>
+            <element signature="e#2641#2642#0" expanded="true" />
+            <element signature="e#2697#2698#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/World.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="409">
+          <caret line="82" column="49" selection-start-line="82" selection-start-column="49" selection-end-line="82" selection-end-column="49" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3011#3012#0" expanded="true" />
+            <element signature="e#3040#3041#0" expanded="true" />
+            <element signature="e#3459#3460#0" expanded="true" />
+            <element signature="e#3494#3495#0" expanded="true" />
+            <element signature="e#3650#3651#0" expanded="true" />
+            <element signature="e#3683#3684#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -711,60 +790,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/World.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="100" column="30" selection-start-line="100" selection-start-column="23" selection-end-line="100" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1745#1746#0" expanded="true" />
-            <element signature="e#1769#1770#0" expanded="true" />
-            <element signature="e#2251#2252#0" expanded="true" />
-            <element signature="e#2286#2287#0" expanded="true" />
-            <element signature="e#2442#2443#0" expanded="true" />
-            <element signature="e#2475#2476#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/com/company/RoomTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1020">
-          <caret line="111" column="38" selection-start-line="111" selection-start-column="38" selection-end-line="111" selection-end-column="38" />
-          <folding>
-            <element signature="e#2615#2616#0" expanded="true" />
-            <element signature="e#2671#2672#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/com/company/itemDataTest.csv">
-      <provider editor-type-id="csv-table-editor">
-        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
-      </provider>
-      <provider selected="true" editor-type-id="csv-text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/com/company/roomDataTest.txt">
+    <entry file="file://$PROJECT_DIR$/src/com/company/newRoomData.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
-          <caret line="17" column="35" selection-start-line="17" selection-start-column="35" selection-end-line="17" selection-end-column="35" />
+          <caret line="17" column="25" lean-forward="true" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/ReadCSV.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="57" column="32" selection-start-line="57" selection-start-column="20" selection-end-line="57" selection-end-column="32" />
+        <state relative-caret-position="153">
+          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ToDo.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="24" selection-start-column="24" selection-end-column="24" />
         </state>
       </provider>
     </entry>

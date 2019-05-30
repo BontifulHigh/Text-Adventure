@@ -33,19 +33,43 @@ public class World {
         //map = myMap();
         map = ReadCSV.readRoomData(roomFile);
         items = ReadCSV.readItemData(itemFile);
+        validateRoomConnections(map);
         placeItemsInRooms();
-        generateConnectingRooms(map);
         startingRoom = getRoom("A");
     }
 
-    public static void generateConnectingRooms(List<Room> rooms) {
-        for(Room room : rooms) {
-            /*
-            room.addConnectingRoom("n", northRoom);
-            room.addConnectingRoom("e", eastRoom);
-            room.addConnectingRoom("s", southRoom);
-            room.addConnectingRoom("w", westRoom);
-            */
+
+
+    private static void validateRoomConnections(List<Room> rooms) {
+        for (Room room : rooms){
+            validateConnection(room, "n");
+            validateConnection(room, "e");
+            validateConnection(room, "s");
+            validateConnection(room, "w");
+        }
+    }
+
+    private static void validateConnection(Room room, String direction){
+        switch (direction){
+            case "n":
+                if(room.getConnectingRoomNum("n") != -1 && room.getRoomNorth() == null){
+                    System.out.println("*** WARNING: ROOM #" + room.getRoomNumber() + " - Unable to find North room #" +room.getConnectingRoomNum("n") +".");
+                }
+                return;
+            case "e":
+                if(room.getConnectingRoomNum("e") != -1 && room.getRoomEast() == null){
+                    System.out.println("*** WARNING: ROOM #" + room.getRoomNumber() + " - Unable to find East room #" +room.getConnectingRoomNum("e") +".");
+                }
+                return;
+            case "s":
+                if(room.getConnectingRoomNum("s") != -1 && room.getRoomSouth() == null){
+                    System.out.println("*** WARNING: ROOM #" + room.getRoomNumber() + " - Unable to find South room #" +room.getConnectingRoomNum("s") +".");
+                }
+                return;
+            case "w":
+                if(room.getConnectingRoomNum("w") != -1 && room.getRoomWest() == null){
+                    System.out.println("*** WARNING: ROOM #" + room.getRoomNumber() + " - Unable to find West room #" +room.getConnectingRoomNum("w") +".");
+                }
         }
     }
 
@@ -56,7 +80,7 @@ public class World {
     public void removeRoom(Room roomToRemove){
         int roomNum = roomToRemove.getRoomNumber();
         for(Room room : map){
-            int[] rooms = room.getSurroundingRooms();
+            int[] rooms = room.getConnectingRooms();
             for(int i=0; i< rooms.length; i++){
                 if(rooms[i] == roomNum){
                     rooms[i] = -1;

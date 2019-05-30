@@ -39,8 +39,8 @@ class RoomTest {
     void getConnectingDirections() {
 
         nRoom = new Room(102, "North Room", "This room is to the North");
-        testingRoom.addSurroundingRoom("n",1);
-        int[] connectingDirs = testingRoom.getSurroundingRooms();
+        testingRoom.addConnectingRoom("n",1);
+        int[] connectingDirs = testingRoom.getConnectingRooms();
 
         assertTrue(connectingDirs[0]!=-1);
 
@@ -83,10 +83,10 @@ class RoomTest {
         world.addRoom(sRoom);
         world.addRoom(wRoom);
 
-        testingRoom.addSurroundingRoom("n",102);
-        testingRoom.addSurroundingRoom("e",103);
-        testingRoom.addSurroundingRoom("s",104);
-        testingRoom.addSurroundingRoom("w",105);
+        testingRoom.addConnectingRoom("n",102);
+        testingRoom.addConnectingRoom("e",103);
+        testingRoom.addConnectingRoom("s",104);
+        testingRoom.addConnectingRoom("w",105);
 
         Room northRoom = testingRoom.getRoomNorth();
         Room eastRoom = testingRoom.getRoomEast();
@@ -118,18 +118,18 @@ class RoomTest {
     @Test
     void removeConnectingRoom1(){
         nRoom = new Room(102, "North Room", "This room is to the North");
-        testingRoom.addSurroundingRoom("n",102);
-        testingRoom.removeSurroundingRoom("n");
+        testingRoom.addConnectingRoom("n",102);
+        testingRoom.removeConnectingRoom("n");
         assertNull(testingRoom.getRoomNorth());
     }
 
     @Test
     void removeConnectingRoom2(){
         nRoom = new Room(103, "North Room", "This room is to the North");
-        testingRoom.addSurroundingRoom("n",103);
-        testingRoom.removeSurroundingRoom("n");
-        testingRoom.removeSurroundingRoom("n");
-        testingRoom.removeSurroundingRoom("n");
+        testingRoom.addConnectingRoom("n",103);
+        testingRoom.removeConnectingRoom("n");
+        testingRoom.removeConnectingRoom("n");
+        testingRoom.removeConnectingRoom("n");
         assertNull(testingRoom.getRoomNorth());
     }
 

@@ -79,18 +79,13 @@ public class ReadCSV {
                     westRoomNum = Integer.parseInt(roomData[6].trim());
                 }
 
-                Room newRoom = new Room(roomNum, roomName, roomDescription);
-                newRoom.addSurroundingRoom("n", northRoomNum);
-                newRoom.addSurroundingRoom("e", eastRoomNum);
-                newRoom.addSurroundingRoom("s", southRoomNum);
-                newRoom.addSurroundingRoom("w", westRoomNum);
+                Room newRoom = new Room(roomNum, roomName, roomDescription, northRoomNum, eastRoomNum, southRoomNum, westRoomNum);
                 rooms.add(newRoom);
 
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         return rooms;
 
     }

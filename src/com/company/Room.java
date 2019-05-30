@@ -14,7 +14,7 @@ public class Room {
     private String name;
     private String description;
     private ArrayList<Item> items = new ArrayList<Item>();
-    private int[] surroundingRooms = new int[4];
+    private int[] connectingRooms = new int[4];
 
     /**
      * Constructor for objects of class Room.
@@ -26,26 +26,20 @@ public class Room {
         roomNumber = roomNum;
         name = roomName;
         description = roomDescription;
+        addConnectingRoom("n", -1);
+        addConnectingRoom("e", -1);
+        addConnectingRoom("s", -1);
+        addConnectingRoom("w", -1);
     }
 
-    public void addSurroundingRoom(String direction, int roomNum) {
-        switch(direction){
-            case "n":
-                surroundingRooms[0] = roomNum;
-                break;
-            case "e":
-                surroundingRooms[1] = roomNum;
-                break;
-            case "s":
-                surroundingRooms[2] = roomNum;
-                break;
-            case "w":
-                surroundingRooms[3] = roomNum;
-                break;
-            default:
-                System.out.println("Unable to recognize that direction.");
-                break;
-        }
+    public Room(int roomNum, String roomName, String roomDescription, int north, int east, int south, int west){
+        roomNumber = roomNum;
+        name = roomName;
+        description = roomDescription;
+        addConnectingRoom("n", north);
+        addConnectingRoom("e", east);
+        addConnectingRoom("s", south);
+        addConnectingRoom("w", west);
     }
 
     public int getRoomNumber(){
@@ -99,43 +93,50 @@ public class Room {
     }
 
     public Room getRoomNorth(){
-        return World.getRoom(surroundingRooms[0]);
+        return World.getRoom(connectingRooms[0]);
     }
 
     public Room getRoomEast(){
-        return World.getRoom(surroundingRooms[1]);
+        return World.getRoom(connectingRooms[1]);
     }
 
     public Room getRoomSouth(){
-        return World.getRoom(surroundingRooms[2]);
+        return World.getRoom(connectingRooms[2]);
     }
 
     public Room getRoomWest(){
-        return World.getRoom(surroundingRooms[3]);
+        return World.getRoom(connectingRooms[3]);
     }
 
-    public void removeSurroundingRoom(String direction){
+    public void addConnectingRoom(String direction, int roomNum) {
+        connectingRooms[getDirectionNum(direction)] = roomNum;
+    }
 
+    public void removeConnectingRoom(String direction){
+        connectingRooms[getDirectionNum(direction)] = -1;
+    }
+
+    public int getConnectingRoomNum(String direction) {
+        return connectingRooms[getDirectionNum(direction)];
+    }
+
+    public int[] getConnectingRooms() {
+        return connectingRooms;
+    }
+
+    public int getDirectionNum(String direction){
         switch(direction){
             case "n":
-                surroundingRooms[0] = -1;
-                break;
+                return 0;
             case "e":
-                surroundingRooms[1] = -1;
-                break;
+                return 1;
             case "s":
-                surroundingRooms[2] = -1;
-                break;
+                return 2;
             case "w":
-                surroundingRooms[3] = -1;
-                break;
+                return 3;
             default:
                 System.out.println("Unable to recognize that direction.");
-                break;
+                return -1;
         }
-    }
-
-    public int[] getSurroundingRooms() {
-        return surroundingRooms;
     }
 }
