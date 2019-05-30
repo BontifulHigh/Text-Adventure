@@ -23,6 +23,7 @@ public class Game {
     public static void main(String[] args) {
         world = new World("src/com/company/newRoomData.txt", "src/com/company/itemData.csv");
         player = new Player(world.getStartingRoom());
+        SickPrinter SP = new SickPrinter(20, 60);
         ui = new UI(player, world);
         ui.menu();
     }

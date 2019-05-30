@@ -42,10 +42,11 @@ public class UI {
         while (!done){
 
             // Describe the room to the player
-            System.out.print(world.getRoomDetails(player.getCurrentRoom()));
+            System.out.print("\n----------------------------------------------------------\n");
+            SickPrinter.print(world.getRoomDetails(player.getCurrentRoom()));
             world.updateNearbyRoomsMap(player.getCurrentRoom());
 
-            System.out.print("\n>\t");
+            System.out.print(">\t");
             String commandString;
             boolean isParsingInput = true;
 

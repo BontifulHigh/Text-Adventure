@@ -138,7 +138,6 @@ public class World {
      */
     public String getRoomDetails(Room room){
         String details="";
-        details += "\n----------------------------------------------------------\n";
         details += room.getDescription();
         details += "\n";
         details += "You may go";
